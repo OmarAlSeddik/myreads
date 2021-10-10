@@ -1,9 +1,15 @@
 import React, { useMemo } from "react";
-import { createTheme, ThemeProvider } from "@mui/material";
-import { useMediaQuery } from "@mui/material";
+
+import {
+  createTheme,
+  CssBaseline,
+  ThemeProvider,
+  useMediaQuery,
+} from "@mui/material";
 import { green } from "@mui/material/colors";
 
 import Header from "./components/Header.tsx";
+import Home from "./components/Home";
 import useStickyState from "./hooks/useStickyState";
 
 const App = () => {
@@ -32,7 +38,9 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Header themeMode={themeMode} toggleTheme={toggleTheme} />
+      <Home />
     </ThemeProvider>
   );
 };

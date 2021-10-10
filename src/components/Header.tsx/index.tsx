@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 
 const Header = (props: any) => {
   return (
-    <AppBar color="primary">
+    <AppBar position="sticky">
       <Toolbar>
         <Grid container alignItems="center">
           <Grid item xs={3}>

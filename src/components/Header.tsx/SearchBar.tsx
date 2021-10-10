@@ -21,10 +21,10 @@ const SearchBar = () => {
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    width: "24ch",
+    width: "36ch",
     transition: theme.transitions.create(["width"]),
     "&:focus-within": {
-      width: "48ch",
+      width: "72ch",
     },
   }));
 
