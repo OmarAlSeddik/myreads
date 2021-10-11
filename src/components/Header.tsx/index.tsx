@@ -1,34 +1,28 @@
-import { AppBar, Toolbar, Typography, Grid, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Stack } from "@mui/material";
+
 import ThemeButton from "./ThemeButton";
 import SearchBar from "./SearchBar";
+import Title from "./Title";
 
 const Header = (props: any) => {
   return (
     <AppBar position="sticky">
-      <Toolbar>
-        <Grid container alignItems="center">
-          <Grid item xs={3}>
-            <Typography
-              variant="h3"
-              component="h1"
-              align="center"
-              sx={{ fontFamily: "Italiano" }}
-            >
-              MyReads
-            </Typography>
-          </Grid>
-          <Grid container item justifyContent="center" xs={6}>
-            <Grid item>
-              <SearchBar />
-            </Grid>
-          </Grid>
-          <Grid item xs={1} sx={{ marginLeft: "auto" }}>
-            <ThemeButton
-              themeMode={props.themeMode}
-              toggleTheme={props.toggleTheme}
-            />
-          </Grid>
-        </Grid>
+      <Toolbar sx={{ width: "90%", alignSelf: "center" }}>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ width: "100%" }}
+        >
+          <Title />
+          <Stack justifyContent="center">
+            <SearchBar />
+          </Stack>
+          <ThemeButton
+            themeMode={props.themeMode}
+            toggleTheme={props.toggleTheme}
+          />
+        </Stack>
       </Toolbar>
     </AppBar>
   );

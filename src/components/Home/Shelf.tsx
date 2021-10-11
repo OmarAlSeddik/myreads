@@ -1,27 +1,24 @@
-import { Divider, Grid, Typography } from "@mui/material";
+import { Divider, Stack, Box, Typography } from "@mui/material";
 import Book from "./Book";
 
 const Shelf = (props: any) => {
   return (
-    <Grid container direction="column" spacing={2}>
-      <Grid item>
+    <Stack direction="column" spacing={2}>
+      <Box>
         <Typography variant="h5" component="h2">
           {props.title}
         </Typography>
         <Divider />
-      </Grid>
-      <Grid item container justifyContent="space-between">
-        <Grid item xs={2}>
-          <Book title="To Kill a Mockingbird" author="Harper Lee" />
-        </Grid>
-        <Grid item xs={2}>
-          <Book title="To Kill a Mockingbird" author="Harper Lee" />
-        </Grid>
-        <Grid item xs={2}>
-          <Book title="To Kill a Mockingbird" author="Harper Lee" />
-        </Grid>
-      </Grid>
-    </Grid>
+      </Box>
+      <Stack
+        justifyContent="space-around"
+        direction={{ xs: "column", sm: "row" }}
+      >
+        <Book title="To Kill a Mockingbird" author="Harper Lee" />
+        <Book title="To Kill a Mockingbird" author="Harper Lee" />
+        <Book title="To Kill a Mockingbird" author="Harper Lee" />
+      </Stack>
+    </Stack>
   );
 };
 

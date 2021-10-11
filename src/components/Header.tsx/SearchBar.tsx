@@ -1,6 +1,8 @@
-import { InputBase, Grid } from "@mui/material";
-import { styled, alpha } from "@mui/material/styles";
+import { IconButton, InputBase, Stack, useMediaQuery } from "@mui/material";
+import { styled, alpha, useTheme } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
+
+import { motion } from "framer-motion";
 
 const SearchBar = () => {
   const CustomSearchBar = styled("div")(({ theme }) => ({
@@ -28,20 +30,31 @@ const SearchBar = () => {
     },
   }));
 
-  return (
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const buttonAnimation = { whileTap: { scale: 1.3 } };
+
+  const mobileView = (
+    <IconButton
+      component={motion.button}
+      variants={buttonAnimation}
+      whileTap="whileTap"
+    >
+      <SearchIcon />
+    </IconButton>
+  );
+  const largeView = (
     <CustomSearchBar>
-      <Grid container alignItems="center">
-        <Grid item>
-          <CustomIconContainer>
-            <SearchIcon />
-          </CustomIconContainer>
-        </Grid>
-        <Grid item>
-          <StyledInputBase placeholder="Search a Book!"></StyledInputBase>
-        </Grid>
-      </Grid>
+      <Stack direction="row" alignItems="center">
+        <CustomIconContainer>
+          <SearchIcon />
+        </CustomIconContainer>
+        <StyledInputBase placeholder="Search a Book!"></StyledInputBase>
+      </Stack>
     </CustomSearchBar>
   );
+
+  return isMobile ? mobileView : largeView;
 };
 
 export default SearchBar;

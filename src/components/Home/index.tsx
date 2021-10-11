@@ -1,21 +1,15 @@
-import { Container, Grid, Box } from "@mui/material";
+import { Container, Stack, Box } from "@mui/material";
 import Shelf from "./Shelf";
 
 const Home = () => {
   return (
     <Container maxWidth="xl">
       <Box sx={{ margin: 2 }} />
-      <Grid container direction="column" spacing={3}>
-        <Grid item>
-          <Shelf title="Currently Reading" />
-        </Grid>
-        <Grid item>
-          <Shelf title="Want to Read" />
-        </Grid>
-        <Grid item>
-          <Shelf title="Read" />
-        </Grid>
-      </Grid>
+      <Stack direction="column" spacing={2}>
+        <Shelf title="Currently Reading" />
+        <Shelf title="Want to Read" />
+        <Shelf title="Read" />
+      </Stack>
     </Container>
   );
 };

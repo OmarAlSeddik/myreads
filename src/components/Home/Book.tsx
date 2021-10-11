@@ -1,14 +1,13 @@
-import { Grid, Box, Typography } from "@mui/material";
+import { Stack, Box, Typography } from "@mui/material";
 
 const Book = (props: any) => {
   return (
-    <Grid container direction="column" alignItems="center">
-      <Grid item container direction="column" alignItems="center">
-        <Grid
-          item
+    <Stack direction="column" alignItems="center">
+      <Stack direction="column" alignItems="center">
+        <Box
           sx={{
-            width: "8rem",
-            height: "12.0625rem",
+            width: { xs: "8rem", sm: "8rem" },
+            height: { xs: "12rem", sm: "12rem" },
             backgroundImage:
               'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")',
           }}
@@ -24,16 +23,12 @@ const Book = (props: any) => {
             <option value="none">None</option>
           </select>
         </div>
-      </Grid>
-      <Grid item>
-        <Typography>{props.title}</Typography>
-      </Grid>
-      <Grid item>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {props.author}
-        </Typography>
-      </Grid>
-    </Grid>
+      </Stack>
+      <Typography>{props.title}</Typography>
+      <Typography variant="body2" sx={{ color: "text.secondary" }}>
+        {props.author}
+      </Typography>
+    </Stack>
   );
 };
 
