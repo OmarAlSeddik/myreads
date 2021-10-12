@@ -15,9 +15,7 @@ const Header = (props: any) => {
           sx={{ width: "100%" }}
         >
           <Title />
-          <Stack justifyContent="center">
-            <SearchBar />
-          </Stack>
+          <SearchBar />
           <ThemeButton
             themeMode={props.themeMode}
             toggleTheme={props.toggleTheme}

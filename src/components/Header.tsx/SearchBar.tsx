@@ -1,4 +1,13 @@
-import { IconButton, InputBase, Stack, useMediaQuery } from "@mui/material";
+import { useState } from "react";
+
+import {
+  IconButton,
+  InputBase,
+  Stack,
+  SwipeableDrawer,
+  useMediaQuery,
+  TextField,
+} from "@mui/material";
 import { styled, alpha, useTheme } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -19,7 +28,6 @@ const SearchBar = () => {
   const CustomIconContainer = styled("div")(({ theme }) => ({
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -34,14 +42,36 @@ const SearchBar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const buttonAnimation = { whileTap: { scale: 1.3 } };
 
+  const [drawer, setDrawer] = useState(false);
+  const openDrawer = () => setDrawer(true);
+  const closeDrawer = () => setDrawer(false);
+  const toggleDrawer = () => setDrawer(!drawer);
+
   const mobileView = (
-    <IconButton
-      component={motion.button}
-      variants={buttonAnimation}
-      whileTap="whileTap"
-    >
-      <SearchIcon />
-    </IconButton>
+    <>
+      <IconButton
+        component={motion.button}
+        variants={buttonAnimation}
+        whileTap="whileTap"
+        onClick={toggleDrawer}
+      >
+        <SearchIcon />
+      </IconButton>
+      <SwipeableDrawer
+        anchor="top"
+        open={drawer}
+        onOpen={openDrawer}
+        onClose={closeDrawer}
+        sx={{ zIndex: 1000 }}
+      >
+        <div style={{ height: "3.5rem" }} />
+        <TextField
+          placeholder="Search a Book!"
+          variant="standard"
+          sx={{ "& .MuiInput-input": { fontSize: "1.5rem" } }}
+        ></TextField>
+      </SwipeableDrawer>
+    </>
   );
   const largeView = (
     <CustomSearchBar>
@@ -49,7 +79,7 @@ const SearchBar = () => {
         <CustomIconContainer>
           <SearchIcon />
         </CustomIconContainer>
-        <StyledInputBase placeholder="Search a Book!"></StyledInputBase>
+        <StyledInputBase placeholder="Search a Book!" />
       </Stack>
     </CustomSearchBar>
   );
