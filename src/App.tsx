@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import {
   createTheme,
   CssBaseline,
+  responsiveFontSizes,
   ThemeProvider,
   useMediaQuery,
 } from "@mui/material";
@@ -25,7 +26,7 @@ const App = () => {
     });
   };
 
-  const theme = useMemo(
+  let theme: any = useMemo(
     () =>
       createTheme({
         palette: {
@@ -36,10 +37,17 @@ const App = () => {
     [themeMode]
   );
 
+  theme = responsiveFontSizes(theme);
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header themeMode={themeMode} toggleTheme={toggleTheme} />
+      <Header
+        themeMode={themeMode}
+        toggleTheme={toggleTheme}
+        isMobile={isMobile}
+      />
       <Home />
     </ThemeProvider>
   );

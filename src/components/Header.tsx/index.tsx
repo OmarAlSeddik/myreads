@@ -6,7 +6,7 @@ import Title from "./Title";
 
 const Header = (props: any) => {
   return (
-    <AppBar position="sticky">
+    <AppBar position="fixed">
       <Toolbar sx={{ width: "90%", alignSelf: "center" }}>
         <Stack
           direction="row"
@@ -15,10 +15,11 @@ const Header = (props: any) => {
           sx={{ width: "100%" }}
         >
           <Title />
-          <SearchBar />
+          <SearchBar isMobile={props.isMobile} />
           <ThemeButton
             themeMode={props.themeMode}
             toggleTheme={props.toggleTheme}
+            isMobile={props.isMobile}
           />
         </Stack>
       </Toolbar>
