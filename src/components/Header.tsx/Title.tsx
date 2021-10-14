@@ -3,10 +3,11 @@ import { Typography } from "@mui/material";
 const Title = () => {
   return (
     <Typography
-      variant="h3"
+      variant="h4"
+      color="primary"
       component="h1"
       align="center"
-      sx={{ fontFamily: "Italiano" }}
+      fontFamily="Italiano"
     >
       MyReads
     </Typography>

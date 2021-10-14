@@ -1,28 +1,33 @@
-import { AppBar, Toolbar, Stack } from "@mui/material";
+import { AppBar, Stack } from "@mui/material";
 
-import ThemeButton from "./ThemeButton";
-import SearchBar from "./SearchBar";
 import Title from "./Title";
+import Navigation from "./Navigation";
+import ThemeButton from "./ThemeButton";
 
 const Header = (props: any) => {
   return (
-    <AppBar position="fixed">
-      <Toolbar sx={{ width: "90%", alignSelf: "center" }}>
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-          sx={{ width: "100%" }}
-        >
-          <Title />
-          <SearchBar isMobile={props.isMobile} />
-          <ThemeButton
-            themeMode={props.themeMode}
-            toggleTheme={props.toggleTheme}
-            isMobile={props.isMobile}
-          />
-        </Stack>
-      </Toolbar>
+    <AppBar
+      color="default"
+      position="fixed"
+      sx={{ alignItems: "center", width: "100vw", left: 0 }}
+    >
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{ width: "90%" }}
+      >
+        <Title />
+        <Navigation
+          pageValue={props.pageValue}
+          handlePageChange={props.handlePageChange}
+        />
+        <ThemeButton
+          themeMode={props.themeMode}
+          toggleTheme={props.toggleTheme}
+          isMobile={props.isMobile}
+        />
+      </Stack>
     </AppBar>
   );
 };

@@ -4,7 +4,7 @@ import Shelf from "./Shelf";
 const Home = () => {
   return (
     <Container maxWidth="xl">
-      <Box sx={{ height: { xs: 56, sm: 64 } }} />
+      <Box sx={{ height: "48px", marginBottom: 2 }} />
       <Stack direction="column" spacing={2}>
         <Shelf title="Currently Reading" />
         <Shelf title="Want to Read" />

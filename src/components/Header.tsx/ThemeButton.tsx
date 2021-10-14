@@ -5,10 +5,14 @@ import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import { motion } from "framer-motion";
 
 const ThemeButton = (props: any) => {
-  const buttonAnimation = { whileTap: { scale: 1.3 } };
+  const buttonAnimation = {
+    whileTap: { scale: 1.3 },
+  };
 
   const darkView = (
     <IconButton
+      size="small"
+      color="primary"
       onClick={props.toggleTheme}
       component={motion.button}
       variants={buttonAnimation}
@@ -20,6 +24,8 @@ const ThemeButton = (props: any) => {
 
   const lightView = (
     <IconButton
+      size="small"
+      color="primary"
       onClick={props.toggleTheme}
       component={motion.button}
       variants={buttonAnimation}
