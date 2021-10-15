@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { green } from "@mui/material/colors";
 
-import Header from "./components/Header.tsx";
+import Header from "./components/Header";
 import Home from "./components/Home";
 import Search from "./components/Search";
 import useStickyState from "./hooks/useStickyState";
@@ -60,8 +60,12 @@ const App = () => {
           handlePageChange={handlePageChange}
         />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/search" component={Search} />
+          <Route exact path="/" render={() => <Home isMobile={isMobile} />} />
+          <Route
+            exact
+            path="/search"
+            render={() => <Search isMobile={isMobile} />}
+          />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>

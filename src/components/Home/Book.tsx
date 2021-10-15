@@ -25,11 +25,8 @@ const Book = (props: any) => {
       container
       direction="column"
       alignItems="center"
-      xs={6}
-      sm={4}
-      md={3}
       lg={2}
-      sx={{ padding: 1 }}
+      sx={{ padding: 3 }}
     >
       <Grid item>
         <ButtonBase onClick={handleClick}>
@@ -77,10 +74,10 @@ const Book = (props: any) => {
         </Menu>
       </Grid>
       <Grid item>
-        <Typography>{props.title}</Typography>
+        <Typography align="center">{props.title}</Typography>
       </Grid>
       <Grid item>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+        <Typography variant="body2" align="center" color="text.secondary">
           {props.author}
         </Typography>
       </Grid>

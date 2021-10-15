@@ -1,14 +1,14 @@
 import { Container, Stack, Box } from "@mui/material";
 import Shelf from "./Shelf";
 
-const Home = () => {
+const Home = (props: any) => {
   return (
     <Container maxWidth="xl">
       <Box sx={{ height: "48px", marginBottom: 2 }} />
       <Stack direction="column" spacing={2}>
-        <Shelf title="Currently Reading" />
-        <Shelf title="Want to Read" />
-        <Shelf title="Read" />
+        <Shelf title="Currently Reading" isMobile={props.isMobile} />
+        <Shelf title="Want to Read" isMobile={props.isMobile} />
+        <Shelf title="Read" isMobile={props.isMobile} />
       </Stack>
     </Container>
   );
