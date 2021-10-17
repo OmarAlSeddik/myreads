@@ -2,13 +2,28 @@ import { Container, Stack, Box } from "@mui/material";
 import Shelf from "./Shelf";
 
 const Home = (props: any) => {
+  const shelves = [
+    { title: "Currently Reading", value: "currentlyReading" },
+    { title: "Want to Read", value: "wantToRead" },
+    { title: "Read", value: "read" },
+  ];
+
   return (
     <Container maxWidth="xl">
       <Box sx={{ height: "48px", marginBottom: 2 }} />
       <Stack direction="column" spacing={2}>
-        <Shelf title="Currently Reading" isMobile={props.isMobile} />
-        <Shelf title="Want to Read" isMobile={props.isMobile} />
-        <Shelf title="Read" isMobile={props.isMobile} />
+        {shelves.map((shelf) => (
+          <Shelf
+            title={shelf.title}
+            value={shelf.value}
+            key={shelf.value}
+            isMobile={props.isMobile}
+            books={props.books}
+            setBooks={props.setBooks}
+            moveBook={props.moveBook}
+            moveBooks={props.moveBooks}
+          />
+        ))}
       </Stack>
     </Container>
   );

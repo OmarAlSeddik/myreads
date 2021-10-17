@@ -15,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 const Header = (props: any) => {
   const mobileView = (
-    <IconButton onClick={props.handleMobileExpand}>
+    <IconButton size="small" color="primary" onClick={props.handleMobileExpand}>
       <MenuIcon />
     </IconButton>
   );
@@ -35,7 +35,16 @@ const Header = (props: any) => {
         Filter
       </Button>
       <Button startIcon={<SelectAllIcon />}>Select</Button>
-      <Button startIcon={<ClearIcon />} color="error">
+      <Button
+        startIcon={<ClearIcon />}
+        color="error"
+        onClick={() =>
+          props.moveBooks(
+            props.books.filter((book: any) => book.shelf === `${props.value}`),
+            "read"
+          )
+        }
+      >
         Clear
       </Button>
     </ButtonGroup>
@@ -92,7 +101,18 @@ const Header = (props: any) => {
             }}
           >
             <Button startIcon={<SelectAllIcon />}>Select</Button>
-            <Button startIcon={<ClearIcon />} color="error">
+            <Button
+              startIcon={<ClearIcon />}
+              color="error"
+              onClick={() =>
+                props.moveBooks(
+                  props.books.filter(
+                    (book: any) => book.shelf === `${props.value}`
+                  ),
+                  "read"
+                )
+              }
+            >
               Clear
             </Button>
           </ButtonGroup>
