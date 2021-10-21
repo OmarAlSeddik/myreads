@@ -13,7 +13,7 @@ import SelectAllIcon from "@mui/icons-material/SelectAll";
 import ClearIcon from "@mui/icons-material/Clear";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const Header = (props: any) => {
+const ShelfToolbar = (props: any) => {
   const mobileView = (
     <IconButton size="small" color="primary" onClick={props.handleMobileExpand}>
       <MenuIcon />
@@ -41,7 +41,7 @@ const Header = (props: any) => {
         onClick={() =>
           props.moveBooks(
             props.books.filter((book: any) => book.shelf === `${props.value}`),
-            "read"
+            "none"
           )
         }
       >
@@ -73,6 +73,8 @@ const Header = (props: any) => {
               fontSize: "1.5rem",
             },
           }}
+          value={props.filterQuery}
+          onChange={props.handleFilter}
         />
       </Collapse>
       <Collapse in={props.mobileExpanded} timeout="auto" unmountOnExit>
@@ -90,6 +92,8 @@ const Header = (props: any) => {
                 fontSize: "1.5rem",
               },
             }}
+            value={props.filterQuery}
+            onChange={props.handleFilter}
           />
           <ButtonGroup
             variant="text"
@@ -109,7 +113,7 @@ const Header = (props: any) => {
                   props.books.filter(
                     (book: any) => book.shelf === `${props.value}`
                   ),
-                  "read"
+                  "none"
                 )
               }
             >
@@ -123,4 +127,4 @@ const Header = (props: any) => {
   );
 };
 
-export default Header;
+export default ShelfToolbar;

@@ -1,5 +1,5 @@
 import { Container, Stack, Box } from "@mui/material";
-import Shelf from "./Shelf";
+import Shelf from "../Shelf";
 
 const Home = (props: any) => {
   const shelves = [
@@ -18,7 +18,9 @@ const Home = (props: any) => {
             value={shelf.value}
             key={shelf.value}
             isMobile={props.isMobile}
-            books={props.books}
+            books={props.books.filter(
+              (book: any) => book.shelf === shelf.value
+            )}
             setBooks={props.setBooks}
             moveBook={props.moveBook}
             moveBooks={props.moveBooks}

@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import {
@@ -14,11 +14,11 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Search from "./components/Search";
 import useStickyState from "./hooks/useStickyState";
-import { getAll, update } from "./BooksAPI";
+import useBook from "./hooks/useBook";
+import { update } from "./BooksAPI";
 
 const App = () => {
   // Theme Section
-
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [themeMode, setThemeMode] = useStickyState(
     prefersDarkMode ? "dark" : "light",
@@ -48,30 +48,26 @@ const App = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   // Routing Section
-
   const [pageValue, setPageValue] = useStickyState(0, "page");
   const handlePageChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setPageValue(newValue);
   };
 
   // Book Management Section
-
-  const [books, setBooks] = useState([] as any[]);
-
-  useEffect(() => {
-    getAll().then((data) => {
-      setBooks(data);
-    });
-  }, []);
+  const [books, setBooks, bookIdMap] = useBook([] as any);
 
   const moveBook = (targetBook: any, destination: string) => {
     const changeBookShelf = () => {
       targetBook.shelf = destination;
       return targetBook;
     };
-    const updatedBooks = books.map((book) => {
+    const updatedBooks = books.map((book: any) => {
       return book.id === targetBook.id ? changeBookShelf() : book;
     });
+    if (!bookIdMap.has(targetBook.id)) {
+      targetBook.shelf = destination;
+      updatedBooks.push(targetBook);
+    }
     setBooks(updatedBooks);
     update(targetBook, destination);
   };
@@ -79,10 +75,6 @@ const App = () => {
   const moveBooks = (targetBooks: Array<any>, destination: string) => {
     return targetBooks.map((book: any) => moveBook(book, destination));
   };
-
-  useEffect(() => {
-    console.log(books);
-  }, [books]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -113,7 +105,14 @@ const App = () => {
             exact
             path="/search"
             render={() => (
-              <Search isMobile={isMobile} books={books} setBooks={setBooks} />
+              <Search
+                isMobile={isMobile}
+                books={books}
+                setBooks={setBooks}
+                moveBook={moveBook}
+                moveBooks={moveBooks}
+                bookIdMap={bookIdMap}
+              />
             )}
           />
         </Switch>

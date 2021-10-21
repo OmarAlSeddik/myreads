@@ -1,6 +1,6 @@
 import { Box, TextField } from "@mui/material";
 
-const SearchBar = () => {
+const SearchBar = (props: any) => {
   return (
     <Box>
       <Box sx={{ height: "48px" }} />
@@ -17,6 +17,8 @@ const SearchBar = () => {
             fontSize: "1.5rem",
           },
         }}
+        value={props.searchQuery}
+        onChange={props.handleSearchQuery}
       />
     </Box>
   );

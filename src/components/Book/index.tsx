@@ -87,15 +87,17 @@ const Book = (props: any) => {
               Read
             </MenuItem>
           )}
-          <MenuItem
-            onClick={(event: any) => {
-              handleClose();
-              props.moveBook(props.book, "none");
-            }}
-            value="none"
-          >
-            None
-          </MenuItem>
+          {props.book.shelf !== undefined && (
+            <MenuItem
+              onClick={(event: any) => {
+                handleClose();
+                props.moveBook(props.book, undefined);
+              }}
+              value={undefined}
+            >
+              None
+            </MenuItem>
+          )}
         </Menu>
       </Grid>
       <Grid item>
