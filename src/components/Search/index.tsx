@@ -8,6 +8,7 @@ import SearchBar from "./SearchBar";
 import Book from "../Book";
 import { search } from "../../BooksAPI";
 import useDebounce from "../../hooks/useDebounce";
+import SearchContent from "./SearchContent";
 
 const Search = (props: any) => {
   const [searchQuery, setSearchQuery] = useStickyState("", "searchQuery");
@@ -51,12 +52,7 @@ const Search = (props: any) => {
         searchQuery={searchQuery}
         handleSearchQuery={handleSearchQuery}
       />
-      <Stack
-        direction="row"
-        sx={{ overflowX: { xs: "auto" }, flexWrap: { lg: "wrap" } }}
-      >
-        {displayedResults}
-      </Stack>
+      <SearchContent displayedResults={displayedResults} />
     </Stack>
   );
 };

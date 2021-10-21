@@ -10,22 +10,24 @@ const Home = (props: any) => {
 
   return (
     <Container maxWidth="xl">
-      <Box sx={{ height: "48px", marginBottom: 2 }} />
-      <Stack direction="column" spacing={2}>
-        {shelves.map((shelf) => (
-          <Shelf
-            title={shelf.title}
-            value={shelf.value}
-            key={shelf.value}
-            isMobile={props.isMobile}
-            books={props.books.filter(
-              (book: any) => book.shelf === shelf.value
-            )}
-            setBooks={props.setBooks}
-            moveBook={props.moveBook}
-            moveBooks={props.moveBooks}
-          />
-        ))}
+      <Stack sx={{ marginLeft: "auto", marginRight: "auto" }}>
+        <Box sx={{ height: "48px", marginBottom: 2 }} />
+        <Stack direction="column" spacing={2}>
+          {shelves.map((shelf) => (
+            <Shelf
+              title={shelf.title}
+              value={shelf.value}
+              key={shelf.value}
+              isMobile={props.isMobile}
+              books={props.books.filter(
+                (book: any) => book.shelf === shelf.value
+              )}
+              setBooks={props.setBooks}
+              moveBook={props.moveBook}
+              moveBooks={props.moveBooks}
+            />
+          ))}
+        </Stack>
       </Stack>
     </Container>
   );
