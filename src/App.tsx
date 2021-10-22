@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 
 import {
   createTheme,
@@ -81,7 +81,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
+      <HashRouter>
         <CssBaseline />
         <Header
           themeMode={themeMode}
@@ -122,7 +122,7 @@ const App = () => {
             )}
           />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 };
