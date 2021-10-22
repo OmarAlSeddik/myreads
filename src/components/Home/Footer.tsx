@@ -41,9 +41,6 @@ const Footer = (props: any) => {
         }}
       >
         <Grid item container xs={12} md={6} justifyContent="center">
-          <Typography>Made with a ⌨️ by Omar Al-Seddik</Typography>
-        </Grid>
-        <Grid item container xs={12} md={6} justifyContent="center">
           <Button
             size="small"
             variant="contained"
@@ -119,6 +116,9 @@ const Footer = (props: any) => {
               </Stack>
             </MenuItem>
           </Menu>
+        </Grid>
+        <Grid item container xs={12} md={6} justifyContent="center">
+          <Typography>Made with a ⌨️ by Omar Al-Seddik</Typography>
         </Grid>
       </Grid>
     </Paper>
