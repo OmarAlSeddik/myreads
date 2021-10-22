@@ -40,12 +40,7 @@ const AlertDialog = (props: any) => {
             color="error"
             onClick={() => {
               props.handleDialogClose();
-              props.moveBooks(
-                props.books.filter(
-                  (book: any) => book.shelf === `${props.value}`
-                ),
-                "none"
-              );
+              props.moveBooks(props.books, "none");
             }}
           >
             Delete

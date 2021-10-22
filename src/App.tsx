@@ -8,7 +8,7 @@ import {
   ThemeProvider,
   useMediaQuery,
 } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { blue, pink, green, amber } from "@mui/material/colors";
 
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -31,17 +31,20 @@ const App = () => {
     });
   };
 
+  const colors = [blue, pink, green, amber];
+  const [themeColor, setThemeColor] = useStickyState(blue, "themeColor");
+
   let theme: any = useMemo(
     () =>
       createTheme({
         palette: {
           mode: themeMode,
           primary: {
-            main: themeMode === "dark" ? blue[400] : blue[900],
+            main: themeMode === "dark" ? themeColor[400] : themeColor[900],
           },
         },
       }),
-    [themeMode]
+    [themeMode, themeColor]
   );
 
   theme = responsiveFontSizes(theme);
@@ -98,6 +101,9 @@ const App = () => {
                 setBooks={setBooks}
                 moveBook={moveBook}
                 moveBooks={moveBooks}
+                colors={colors}
+                themeColor={themeColor}
+                setThemeColor={setThemeColor}
               />
             )}
           />

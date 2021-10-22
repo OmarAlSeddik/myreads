@@ -11,8 +11,13 @@ const ShelfToolbar = (props: any) => {
   return (
     <Stack>
       <Stack direction="row" justifyContent="space-between">
-        <Typography variant="h4" component="h2" fontFamily="Italiano">
-          {props.title}
+        <Typography
+          variant="h4"
+          component="h2"
+          fontFamily="Italiano"
+          color="primary"
+        >
+          {props.shelfTitle}
         </Typography>
         {props.isMobile ? (
           <MobileView handleMobileExpand={props.handleMobileExpand} />
@@ -41,14 +46,22 @@ const ShelfToolbar = (props: any) => {
         />
       )}
       <SelectionCollapse
+        books={props.books}
+        filterQuery={props.filterQuery}
         selectionMode={props.selectionMode}
+        selectedBooks={props.selectedBooks}
         selectAll={props.selectAll}
         deselectAll={props.deselectAll}
+        moveBooks={props.moveBooks}
+        shelfValue={props.shelfValue}
+        match={props.match}
       />
       <AlertDialog
+        books={props.books}
         dialog={props.dialog}
         handleDialogClose={props.handleDialogClose}
-        value={props.value}
+        shelfValue={props.shelfValue}
+        moveBooks={props.moveBooks}
       />
     </Stack>
   );

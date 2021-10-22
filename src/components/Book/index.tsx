@@ -22,14 +22,17 @@ const Book = (props: any) => {
       container
       direction="column"
       alignItems="center"
-      lg={2}
+      lg={3}
+      xl={2}
       sx={{ padding: 2.5 }}
     >
       <BookBody
         book={props.book}
         handleClick={handleClick}
-        selectBook={props.selectBook}
         selectionMode={props.selectionMode}
+        selected={props.selected}
+        selectBook={props.selectBook}
+        deselectBook={props.deselectBook}
       />
       <BookFooter book={props.book} />
       <BookMenu

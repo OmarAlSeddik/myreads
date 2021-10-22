@@ -58,9 +58,9 @@ const BookMenu = (props: any) => {
           <MenuItem
             onClick={(event: any) => {
               props.handleClose();
-              props.moveBook(props.book, undefined);
+              props.moveBook(props.book, "none");
             }}
-            value={undefined}
+            value="none"
           >
             None
           </MenuItem>

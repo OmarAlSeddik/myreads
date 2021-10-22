@@ -2,24 +2,28 @@ import React, { useState } from "react";
 
 import { Stack } from "@mui/material";
 
+import escapeStringRegexp from "escape-string-regexp";
+
 import ShelfHeader from "./ShelfHeader";
 import ShelfBody from "./ShelfBody";
 
 const Shelf = (props: any) => {
-  const [filterExpanded, setFilterExpanded] = useState(false);
-  const handleFilterExpand = (event: React.ChangeEvent<{}>) => {
-    return setFilterExpanded(!filterExpanded);
-  };
-
   const [mobileExpanded, setMobileExpanded] = useState(false);
   const handleMobileExpand = (event: React.ChangeEvent<{}>) => {
     return setMobileExpanded(!mobileExpanded);
+  };
+
+  const [filterExpanded, setFilterExpanded] = useState(false);
+  const handleFilterExpand = (event: React.ChangeEvent<{}>) => {
+    return setFilterExpanded(!filterExpanded);
   };
 
   const [filterQuery, setFilterQuery] = useState("");
   const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilterQuery(event.target.value);
   };
+
+  const match = new RegExp(escapeStringRegexp(filterQuery), "i");
 
   const [dialog, setDialog] = useState(false);
   const handleDialogOpen = () => setDialog(true);
@@ -28,7 +32,13 @@ const Shelf = (props: any) => {
   const [selectionMode, setSelectionMode] = useState(false);
   const [selectedBooks, setSelectedBooks] = useState([] as any[]);
 
-  const toggleSelectionMode = () => setSelectionMode(!selectionMode);
+  const toggleSelectionMode = () => {
+    if (selectionMode === false) setSelectionMode(true);
+    if (selectionMode === true) {
+      setSelectionMode(false);
+      setSelectedBooks([]);
+    }
+  };
 
   const selectBook = (targetBook: any) => {
     if (selectionMode)
@@ -45,40 +55,48 @@ const Shelf = (props: any) => {
       );
   };
 
-  const selectAll = () => setSelectedBooks(props.books);
+  const selectAll = () =>
+    setSelectedBooks(
+      props.books.filter(
+        (book: any) => match.test(book.title) || match.test(book.authors)
+      )
+    );
   const deselectAll = () => setSelectedBooks([]);
 
   return (
     <Stack>
       <ShelfHeader
-        title={props.title}
-        value={props.value}
+        shelfTitle={props.shelfTitle}
+        shelfValue={props.shelfValue}
         books={props.books}
         isMobile={props.isMobile}
+        moveBook={props.moveBook}
+        moveBooks={props.moveBooks}
         filterExpanded={filterExpanded}
         handleFilterExpand={handleFilterExpand}
         mobileExpanded={mobileExpanded}
         handleMobileExpand={handleMobileExpand}
-        moveBook={props.moveBook}
-        moveBooks={props.moveBooks}
         filterQuery={filterQuery}
         handleFilter={handleFilter}
+        match={match}
         dialog={dialog}
         handleDialogOpen={handleDialogOpen}
         handleDialogClose={handleDialogClose}
         selectionMode={selectionMode}
         toggleSelectionMode={toggleSelectionMode}
+        selectedBooks={selectedBooks}
         selectAll={selectAll}
         deselectAll={deselectAll}
       />
       <ShelfBody
         books={props.books}
-        filterQuery={filterQuery}
         moveBook={props.moveBook}
-        value={props.value}
-        displayedResults={props.displayedResults}
+        filterQuery={filterQuery}
+        selectionMode={selectionMode}
+        selectedBooks={selectedBooks}
         selectBook={selectBook}
         deselectBook={deselectBook}
+        match={match}
       />
     </Stack>
   );

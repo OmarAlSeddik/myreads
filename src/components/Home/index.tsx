@@ -1,5 +1,6 @@
-import { Container, Stack, Box } from "@mui/material";
+import { Stack, Box } from "@mui/material";
 import Shelf from "../Shelf";
+import Footer from "./Footer";
 
 const Home = (props: any) => {
   const shelves = [
@@ -9,14 +10,20 @@ const Home = (props: any) => {
   ];
 
   return (
-    <Container maxWidth="xl">
-      <Stack sx={{ marginLeft: "auto", marginRight: "auto" }}>
+    <>
+      <Stack
+        sx={{
+          width: "95%",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
         <Box sx={{ height: "48px", marginBottom: 2 }} />
         <Stack direction="column" spacing={2}>
           {shelves.map((shelf) => (
             <Shelf
-              title={shelf.title}
-              value={shelf.value}
+              shelfTitle={shelf.title}
+              shelfValue={shelf.value}
               key={shelf.value}
               isMobile={props.isMobile}
               books={props.books.filter(
@@ -29,7 +36,12 @@ const Home = (props: any) => {
           ))}
         </Stack>
       </Stack>
-    </Container>
+      <Footer
+        colors={props.colors}
+        themeColor={props.themeColor}
+        setThemeColor={props.setThemeColor}
+      />
+    </>
   );
 };
 

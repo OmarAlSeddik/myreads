@@ -4,14 +4,19 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxTwoToneIcon from "@mui/icons-material/CheckBoxTwoTone";
 
 const BookBody = (props: any) => {
+  console.log(props.selected);
   return (
     <Grid item>
       <ButtonBase
-        onClick={
-          props.selectionMode ? props.selectBook(props.book) : props.handleClick
-        }
+        onClick={(event) => {
+          if (props.selectionMode) {
+            props.selected
+              ? props.deselectBook(props.book)
+              : props.selectBook(props.book);
+          } else props.handleClick(event);
+        }}
       >
-        {props.selectionMode && (
+        {props.selectionMode && props.selected && (
           <CheckBoxTwoToneIcon
             sx={{
               position: "absolute",
@@ -23,7 +28,7 @@ const BookBody = (props: any) => {
             }}
           />
         )}
-        {props.selectionMode && (
+        {props.selectionMode && !props.selected && (
           <CheckBoxOutlineBlankIcon
             sx={{
               position: "absolute",
