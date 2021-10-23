@@ -47,8 +47,6 @@ const Search = (props: any) => {
       <Book book={book} moveBook={props.moveBook} key={book.id} />
     ));
 
-  console.log(searchResults);
-
   return (
     <Stack>
       <SearchBar

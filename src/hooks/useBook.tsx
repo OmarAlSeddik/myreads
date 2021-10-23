@@ -18,6 +18,10 @@ const useBook = (defaultValue: any) => {
     });
   }, []);
 
+  useEffect(() => {
+    setBookIdMap(createMap(books));
+  }, [books]);
+
   return [books, setBooks, bookIdMap];
 };
 
