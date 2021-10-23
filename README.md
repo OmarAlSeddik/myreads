@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# MyReads Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my personal take of Udacity's MyReads react project, with quality of life functionality and a fresh look. This also happens to be my very first completed React project.
 
-## Available Scripts
+## Demo
 
-In the project directory, you can run:
+#### https://myreads-omaralseddik.netlify.app/#/
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You can either download the zip file and extract it or download the project through git:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+git clone https://github.com/OmarAlSeddik/myreads
+cd myreads
+```
 
-### `npm test`
+Next, install the dependencies and run:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### npm
 
-### `npm run build`
+```
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+yarn install
+yarn start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Backend
 
-### `npm run eject`
+The backend API is provided by Udacity. It uses a fixed set of cached search results and is limited to a particular set of search terms.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Used Libraries/Packages
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### [MUI](https://mui.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### [Framer Motion](https://www.framer.com/motion/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### [escape-string-regexp](https://www.npmjs.com/package/escape-string-regexp)
 
-## Learn More
+## Outsourced Hooks
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### [useDebounce](https://usehooks-typescript.com/react-hook/use-debounce/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### [useStickyState](https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/)
+
+## Features
+
+#### Fulfills Udacity's Specifications
+
+This project fulfills all Udacity's MyReads project specifications. The Specs.
+
+#### A User-Friendly Design
+
+This project is designed to provide a more intuitive UI. Navigation between the home page and search page is made more user-friendly through adjacent tabs. Books in their entirety are clickable and will trigger the move menu to pop up instead of having to click on a tiny button to do so. Scrolling through shelves and search results are made horizontal on smaller screen sizes for better navigation.
+
+#### 100% Responsive
+
+This project uses an 18-grid layout and supports screens of all sizes. All components also scale with the user's preferred zoom/font size settings.
+
+#### A Customizable Theme That Sticks
+
+This project queries the user's preferred theme mode from their device settings on the first visit and applies that. The user can alter the theme mode as they wish through a button in the top-right corner of the screen. The user can also change the theme color of the page. This is done through a button in the footer of the homepage. The theme mode and color values are stored in the local storage, so they won't change on refreshes or revisits unless the user deletes their cache.
+
+#### Filter, Multi-Select, and Clear
+
+These are quality of life options available in the header of every shelf on the homepage. Both the filter and multi-select functionalities can be active at the same time.
