@@ -39,12 +39,15 @@ const Search = (props: any) => {
   }, [debouncedSearchQuery]);
 
   const displayedResults = searchResults
+    .filter((book: any) => book.hasOwnProperty("imageLinks"))
     .map((book: any) =>
       props.bookIdMap.has(book.id) ? props.bookIdMap.get(book.id) : book
     )
     .map((book: any) => (
       <Book book={book} moveBook={props.moveBook} key={book.id} />
     ));
+
+  console.log(searchResults);
 
   return (
     <Stack>

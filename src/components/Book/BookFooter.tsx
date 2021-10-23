@@ -8,7 +8,7 @@ const BookFooter = (props: any) => {
       </Grid>
       <Grid item>
         <Typography variant="body2" align="center" color="text.secondary">
-          {props.book.authors}
+          {props.book.authors || "Unknown"}
         </Typography>
       </Grid>
     </>

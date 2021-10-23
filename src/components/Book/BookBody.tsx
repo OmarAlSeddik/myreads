@@ -4,7 +4,6 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxTwoToneIcon from "@mui/icons-material/CheckBoxTwoTone";
 
 const BookBody = (props: any) => {
-  console.log(props.selected);
   return (
     <Grid item>
       <ButtonBase
