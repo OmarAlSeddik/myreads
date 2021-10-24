@@ -53,7 +53,7 @@ The backend API is provided by Udacity. It uses a fixed set of cached search res
 
 ### Fulfills Udacity's Specifications
 
-This project fulfills all Udacity's MyReads project specifications. The Specs.
+This project fulfills all Udacity's MyReads project specifications. [The Specs].(https://review.udacity.com/#!/rubrics/918/view)
 
 ### A User-Friendly Design
 
