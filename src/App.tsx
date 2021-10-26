@@ -102,7 +102,6 @@ const App = () => {
                 moveBook={moveBook}
                 moveBooks={moveBooks}
                 colors={colors}
-                themeColor={themeColor}
                 setThemeColor={setThemeColor}
               />
             )}
@@ -118,6 +117,8 @@ const App = () => {
                 moveBook={moveBook}
                 moveBooks={moveBooks}
                 bookIdMap={bookIdMap}
+                colors={colors}
+                setThemeColor={setThemeColor}
               />
             )}
           />

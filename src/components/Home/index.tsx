@@ -1,6 +1,6 @@
 import { Stack, Box } from "@mui/material";
 import Shelf from "../Shelf";
-import Footer from "./Footer";
+import Footer from "../Footer";
 
 const Home = (props: any) => {
   const shelves = [
@@ -10,12 +10,13 @@ const Home = (props: any) => {
   ];
 
   return (
-    <>
+    <Stack sx={{ minHeight: "100vh" }}>
       <Stack
         sx={{
           width: "95%",
           marginLeft: "auto",
           marginRight: "auto",
+          flex: "1 0 auto",
         }}
       >
         <Box sx={{ height: "48px", marginBottom: 2 }} />
@@ -36,12 +37,8 @@ const Home = (props: any) => {
           ))}
         </Stack>
       </Stack>
-      <Footer
-        colors={props.colors}
-        themeColor={props.themeColor}
-        setThemeColor={props.setThemeColor}
-      />
-    </>
+      <Footer colors={props.colors} setThemeColor={props.setThemeColor} />
+    </Stack>
   );
 };
 

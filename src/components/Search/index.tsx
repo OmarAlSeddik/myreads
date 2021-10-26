@@ -9,6 +9,7 @@ import Book from "../Book";
 import { search } from "../../BooksAPI";
 import useDebounce from "../../hooks/useDebounce";
 import SearchContent from "./SearchContent";
+import Footer from "../Footer";
 
 const Search = (props: any) => {
   const [searchQuery, setSearchQuery] = useStickyState("", "searchQuery");
@@ -48,12 +49,15 @@ const Search = (props: any) => {
     ));
 
   return (
-    <Stack>
-      <SearchBar
-        searchQuery={searchQuery}
-        handleSearchQuery={handleSearchQuery}
-      />
-      <SearchContent displayedResults={displayedResults} />
+    <Stack sx={{ minHeight: "100vh" }}>
+      <Stack sx={{ flex: "1 0 auto" }}>
+        <SearchBar
+          searchQuery={searchQuery}
+          handleSearchQuery={handleSearchQuery}
+        />
+        <SearchContent displayedResults={displayedResults} />
+      </Stack>
+      <Footer colors={props.colors} setThemeColor={props.setThemeColor} />
     </Stack>
   );
 };
