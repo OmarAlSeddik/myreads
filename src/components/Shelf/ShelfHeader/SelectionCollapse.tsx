@@ -67,6 +67,7 @@ const SelectionCollapse = (props: any) => {
             onClick={(event: any) => {
               handleClose();
               props.moveBooks(props.selectedBooks, "currentlyReading");
+              props.deselectAll();
             }}
             value="currentlyReading"
           >
@@ -78,6 +79,7 @@ const SelectionCollapse = (props: any) => {
             onClick={(event: any) => {
               handleClose();
               props.moveBooks(props.selectedBooks, "wantToRead");
+              props.deselectAll();
             }}
             value="wantToRead"
           >
@@ -90,6 +92,7 @@ const SelectionCollapse = (props: any) => {
             onClick={(event: any) => {
               handleClose();
               props.moveBooks(props.selectedBooks, "read");
+              props.deselectAll();
             }}
             value="read"
           >
@@ -101,6 +104,7 @@ const SelectionCollapse = (props: any) => {
           onClick={(event: any) => {
             handleClose();
             props.moveBooks(props.selectedBooks, "none");
+            props.deselectAll();
           }}
           value="none"
         >
