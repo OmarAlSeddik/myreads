@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import AppContext from "../../../store/AppContext";
+
 import { Stack, Typography, Divider } from "@mui/material";
 
 import MobileView from "./MobileView";
@@ -8,6 +11,8 @@ import SelectionCollapse from "./SelectionCollapse";
 import AlertDialog from "./AlertDialog";
 
 const ShelfToolbar = (props: any) => {
+  const context = useContext(AppContext);
+
   return (
     <Stack>
       <Stack direction="row" justifyContent="space-between">
@@ -19,7 +24,7 @@ const ShelfToolbar = (props: any) => {
         >
           {props.shelfTitle}
         </Typography>
-        {props.isMobile ? (
+        {context.isMobile ? (
           <MobileView handleMobileExpand={props.handleMobileExpand} />
         ) : (
           <LargeView
@@ -30,7 +35,7 @@ const ShelfToolbar = (props: any) => {
         )}
       </Stack>
       <Divider />
-      {props.isMobile ? (
+      {context.isMobile ? (
         <MobileCollapse
           mobileExpanded={props.mobileExpanded}
           filterQuery={props.filterQuery}
@@ -52,7 +57,6 @@ const ShelfToolbar = (props: any) => {
         selectedBooks={props.selectedBooks}
         selectAll={props.selectAll}
         deselectAll={props.deselectAll}
-        moveBooks={props.moveBooks}
         shelfValue={props.shelfValue}
         match={props.match}
       />
@@ -61,7 +65,6 @@ const ShelfToolbar = (props: any) => {
         dialog={props.dialog}
         handleDialogClose={props.handleDialogClose}
         shelfValue={props.shelfValue}
-        moveBooks={props.moveBooks}
       />
     </Stack>
   );

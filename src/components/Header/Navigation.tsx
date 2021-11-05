@@ -1,12 +1,17 @@
+import { useContext } from "react";
+import AppContext from "../../store/AppContext";
+
 import { Link as RouterLink } from "react-router-dom";
 
 import { Tabs, Tab } from "@mui/material";
 
-const Navigation = (props: any) => {
+const Navigation = () => {
+  const context = useContext(AppContext);
+
   return (
     <Tabs
-      value={props.pageValue}
-      onChange={props.handlePageChange}
+      value={context.pageValue}
+      onChange={context.handlePageChange}
       indicatorColor="primary"
       textColor="primary"
       variant="fullWidth"
@@ -19,7 +24,7 @@ const Navigation = (props: any) => {
     >
       <Tab
         disableRipple
-        label="home"
+        label="Home"
         component={RouterLink}
         to="/"
         sx={{
@@ -30,7 +35,7 @@ const Navigation = (props: any) => {
       />
       <Tab
         disableRipple
-        label="search"
+        label="Search"
         component={RouterLink}
         to="/search"
         sx={{

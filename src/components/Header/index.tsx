@@ -4,7 +4,7 @@ import Title from "./Title";
 import Navigation from "./Navigation";
 import ThemeButton from "./ThemeButton";
 
-const Header = (props: any) => {
+const Header = () => {
   return (
     <AppBar
       color="default"
@@ -18,15 +18,8 @@ const Header = (props: any) => {
         sx={{ width: "90%" }}
       >
         <Title />
-        <Navigation
-          pageValue={props.pageValue}
-          handlePageChange={props.handlePageChange}
-        />
-        <ThemeButton
-          themeMode={props.themeMode}
-          toggleTheme={props.toggleTheme}
-          isMobile={props.isMobile}
-        />
+        <Navigation />
+        <ThemeButton />
       </Stack>
     </AppBar>
   );

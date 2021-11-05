@@ -1,8 +1,13 @@
+import { useContext } from "react";
+import AppContext from "../../store/AppContext";
+
 import { Stack, Box } from "@mui/material";
 import Shelf from "../Shelf";
 import Footer from "../Footer";
 
-const Home = (props: any) => {
+const Home = () => {
+  const context = useContext(AppContext);
+
   const shelves = [
     { title: "Currently Reading", value: "currentlyReading" },
     { title: "Want to Read", value: "wantToRead" },
@@ -26,18 +31,17 @@ const Home = (props: any) => {
               shelfTitle={shelf.title}
               shelfValue={shelf.value}
               key={shelf.value}
-              isMobile={props.isMobile}
-              books={props.books.filter(
+              books={context.books.filter(
                 (book: any) => book.shelf === shelf.value
               )}
-              setBooks={props.setBooks}
-              moveBook={props.moveBook}
-              moveBooks={props.moveBooks}
+              setBooks={context.setBooks}
+              moveBook={context.moveBook}
+              moveBooks={context.moveBooks}
             />
           ))}
         </Stack>
       </Stack>
-      <Footer colors={props.colors} setThemeColor={props.setThemeColor} />
+      <Footer />
     </Stack>
   );
 };

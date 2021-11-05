@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import AppContext from "../../store/AppContext";
 
 import {
   Paper,
@@ -12,7 +13,9 @@ import {
 
 import CircleIcon from "@mui/icons-material/Circle";
 
-const Footer = (props: any) => {
+const Footer = () => {
+  const context = useContext(AppContext);
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = anchorEl ? true : false;
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -23,7 +26,7 @@ const Footer = (props: any) => {
   };
 
   const handleColorChange = (color: any) => {
-    props.setThemeColor(color);
+    context.setThemeColor(color);
   };
 
   return (
@@ -62,7 +65,7 @@ const Footer = (props: any) => {
             <MenuItem
               onClick={() => {
                 handleClose();
-                handleColorChange(props.colors[0]);
+                handleColorChange(context.colors[0]);
               }}
             >
               <Stack direction="row" justifyContent="space-between">
@@ -76,7 +79,7 @@ const Footer = (props: any) => {
             <MenuItem
               onClick={() => {
                 handleClose();
-                handleColorChange(props.colors[1]);
+                handleColorChange(context.colors[1]);
               }}
             >
               <Stack direction="row" justifyContent="space-between">
@@ -90,7 +93,7 @@ const Footer = (props: any) => {
             <MenuItem
               onClick={() => {
                 handleClose();
-                handleColorChange(props.colors[2]);
+                handleColorChange(context.colors[2]);
               }}
             >
               <Stack direction="row" justifyContent="space-between">
@@ -104,7 +107,7 @@ const Footer = (props: any) => {
             <MenuItem
               onClick={() => {
                 handleClose();
-                handleColorChange(props.colors[3]);
+                handleColorChange(context.colors[3]);
               }}
             >
               <Stack direction="row" justifyContent="space-between">

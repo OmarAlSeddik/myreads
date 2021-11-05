@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import AppContext from "../../../store/AppContext";
+
 import {
   Dialog,
   DialogTitle,
@@ -12,6 +15,8 @@ import ClearIcon from "@mui/icons-material/Clear";
 import UndoIcon from "@mui/icons-material/Undo";
 
 const AlertDialog = (props: any) => {
+  const context = useContext(AppContext);
+
   return (
     <Dialog open={props.dialog} onClose={props.handleDialogClose}>
       <DialogTitle>Clear all books from this shelf?</DialogTitle>
@@ -40,7 +45,7 @@ const AlertDialog = (props: any) => {
             color="error"
             onClick={() => {
               props.handleDialogClose();
-              props.moveBooks(props.books, "none");
+              context.moveBooks(props.books, "none");
             }}
           >
             Delete

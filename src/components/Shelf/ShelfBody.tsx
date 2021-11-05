@@ -1,7 +1,13 @@
+import { useContext } from "react";
+import AppContext from "../../store/AppContext";
+
 import { Grid } from "@mui/material";
+
 import Book from "../Book";
 
 const ShelfBody = (props: any) => {
+  const context = useContext(AppContext);
+
   return (
     <Grid
       container
@@ -18,7 +24,7 @@ const ShelfBody = (props: any) => {
         .map((book: any) => (
           <Book
             book={book}
-            moveBook={props.moveBook}
+            moveBook={context.moveBook}
             selectionMode={props.selectionMode}
             selected={
               props.selectedBooks.filter(

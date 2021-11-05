@@ -69,7 +69,6 @@ const Shelf = (props: any) => {
         shelfTitle={props.shelfTitle}
         shelfValue={props.shelfValue}
         books={props.books}
-        isMobile={props.isMobile}
         moveBook={props.moveBook}
         moveBooks={props.moveBooks}
         filterExpanded={filterExpanded}
@@ -90,7 +89,6 @@ const Shelf = (props: any) => {
       />
       <ShelfBody
         books={props.books}
-        moveBook={props.moveBook}
         filterQuery={filterQuery}
         selectionMode={selectionMode}
         selectedBooks={selectedBooks}

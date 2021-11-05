@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import AppContext from "../../store/AppContext";
 
 import { Stack } from "@mui/material";
 
@@ -11,7 +12,9 @@ import useDebounce from "../../hooks/useDebounce";
 import SearchContent from "./SearchContent";
 import Footer from "../Footer";
 
-const Search = (props: any) => {
+const Search = () => {
+  const context = useContext(AppContext);
+
   const [searchQuery, setSearchQuery] = useStickyState("", "searchQuery");
   const debouncedSearchQuery = useDebounce(searchQuery);
   const handleSearchQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,10 +45,10 @@ const Search = (props: any) => {
   const displayedResults = searchResults
     .filter((book: any) => book.hasOwnProperty("imageLinks"))
     .map((book: any) =>
-      props.bookIdMap.has(book.id) ? props.bookIdMap.get(book.id) : book
+      context.bookIdMap.has(book.id) ? context.bookIdMap.get(book.id) : book
     )
     .map((book: any) => (
-      <Book book={book} moveBook={props.moveBook} key={book.id} />
+      <Book book={book} moveBook={context.moveBook} key={book.id} />
     ));
 
   return (
@@ -57,7 +60,7 @@ const Search = (props: any) => {
         />
         <SearchContent displayedResults={displayedResults} />
       </Stack>
-      <Footer colors={props.colors} setThemeColor={props.setThemeColor} />
+      <Footer />
     </Stack>
   );
 };

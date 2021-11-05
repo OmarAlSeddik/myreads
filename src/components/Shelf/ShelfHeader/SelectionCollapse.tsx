@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AppContext from "../../../store/AppContext";
 import { Collapse, Stack, Button, Menu, MenuItem } from "@mui/material";
 
 const SelectionCollapse = (props: any) => {
+  const context = useContext(AppContext);
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = anchorEl ? true : false;
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -66,7 +69,7 @@ const SelectionCollapse = (props: any) => {
           <MenuItem
             onClick={(event: any) => {
               handleClose();
-              props.moveBooks(props.selectedBooks, "currentlyReading");
+              context.moveBooks(props.selectedBooks, "currentlyReading");
               props.deselectAll();
             }}
             value="currentlyReading"
@@ -78,7 +81,7 @@ const SelectionCollapse = (props: any) => {
           <MenuItem
             onClick={(event: any) => {
               handleClose();
-              props.moveBooks(props.selectedBooks, "wantToRead");
+              context.moveBooks(props.selectedBooks, "wantToRead");
               props.deselectAll();
             }}
             value="wantToRead"
@@ -91,7 +94,7 @@ const SelectionCollapse = (props: any) => {
           <MenuItem
             onClick={(event: any) => {
               handleClose();
-              props.moveBooks(props.selectedBooks, "read");
+              context.moveBooks(props.selectedBooks, "read");
               props.deselectAll();
             }}
             value="read"
@@ -103,7 +106,7 @@ const SelectionCollapse = (props: any) => {
         <MenuItem
           onClick={(event: any) => {
             handleClose();
-            props.moveBooks(props.selectedBooks, "none");
+            context.moveBooks(props.selectedBooks, "none");
             props.deselectAll();
           }}
           value="none"
