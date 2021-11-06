@@ -1,10 +1,15 @@
+import { useContext } from "react";
+import ShelfContext from "../../../store/ShelfContext";
+
 import { ButtonGroup, Button } from "@mui/material";
 
 import SearchIcon from "@mui/icons-material/Search";
 import SelectAllIcon from "@mui/icons-material/SelectAll";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const LargeView = (props: any) => {
+const LargeView = () => {
+  const shelfContext = useContext(ShelfContext);
+
   return (
     <ButtonGroup
       variant="text"
@@ -16,16 +21,22 @@ const LargeView = (props: any) => {
         },
       }}
     >
-      <Button startIcon={<SearchIcon />} onClick={props.handleFilterExpand}>
+      <Button
+        startIcon={<SearchIcon />}
+        onClick={shelfContext.handleFilterExpand}
+      >
         Filter
       </Button>
-      <Button startIcon={<SelectAllIcon />} onClick={props.toggleSelectionMode}>
+      <Button
+        startIcon={<SelectAllIcon />}
+        onClick={shelfContext.toggleSelectionMode}
+      >
         Select
       </Button>
       <Button
         startIcon={<ClearIcon />}
         color="error"
-        onClick={props.handleDialogOpen}
+        onClick={shelfContext.handleDialogOpen}
       >
         Clear
       </Button>

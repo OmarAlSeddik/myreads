@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import AppContext from "../../../store/AppContext";
+import ShelfContext from "../../../store/ShelfContext";
 
 import {
   Dialog,
@@ -16,9 +17,10 @@ import UndoIcon from "@mui/icons-material/Undo";
 
 const AlertDialog = (props: any) => {
   const context = useContext(AppContext);
+  const shelfContext = useContext(ShelfContext);
 
   return (
-    <Dialog open={props.dialog} onClose={props.handleDialogClose}>
+    <Dialog open={shelfContext.dialog} onClose={shelfContext.handleDialogClose}>
       <DialogTitle>Clear all books from this shelf?</DialogTitle>
       <DialogContent>
         <DialogContentText>You can't undo this action.</DialogContentText>
@@ -35,7 +37,7 @@ const AlertDialog = (props: any) => {
         >
           <Button
             startIcon={<UndoIcon />}
-            onClick={props.handleDialogClose}
+            onClick={shelfContext.handleDialogClose}
             autoFocus
           >
             Cancel
@@ -44,7 +46,7 @@ const AlertDialog = (props: any) => {
             startIcon={<ClearIcon />}
             color="error"
             onClick={() => {
-              props.handleDialogClose();
+              shelfContext.handleDialogClose();
               context.moveBooks(props.books, "none");
             }}
           >

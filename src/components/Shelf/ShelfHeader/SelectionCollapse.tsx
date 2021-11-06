@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import AppContext from "../../../store/AppContext";
+import ShelfContext from "../../../store/ShelfContext";
 import { Collapse, Stack, Button, Menu, MenuItem } from "@mui/material";
 
 const SelectionCollapse = (props: any) => {
   const context = useContext(AppContext);
+  const shelfContext = useContext(ShelfContext);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = anchorEl ? true : false;
@@ -15,27 +17,28 @@ const SelectionCollapse = (props: any) => {
   };
 
   return (
-    <Collapse in={props.selectionMode} timeout="auto" unmountOnExit>
+    <Collapse in={shelfContext.selectionMode} timeout="auto" unmountOnExit>
       <Stack direction="row" justifyContent="center">
         <Button
           size="small"
           variant="contained"
           disabled={
-            props.selectedBooks.length ===
+            shelfContext.selectedBooks.length ===
             props.books.filter(
               (book: any) =>
-                props.match.test(book.title) || props.match.test(book.authors)
+                shelfContext.match.test(book.title) ||
+                shelfContext.match.test(book.authors)
             ).length
           }
           sx={{ margin: 1, textTransform: "capitalize" }}
-          onClick={props.selectAll}
+          onClick={shelfContext.selectAll}
         >
           Select All
         </Button>
         <Button
           size="small"
           variant="contained"
-          disabled={props.selectedBooks.length === 0}
+          disabled={shelfContext.selectedBooks.length === 0}
           sx={{ margin: 1, textTransform: "capitalize" }}
           onClick={handleClick}
         >
@@ -45,9 +48,9 @@ const SelectionCollapse = (props: any) => {
           color="error"
           size="small"
           variant="contained"
-          disabled={props.selectedBooks.length === 0}
+          disabled={shelfContext.selectedBooks.length === 0}
           sx={{ margin: 1, textTransform: "capitalize" }}
-          onClick={props.deselectAll}
+          onClick={shelfContext.deselectAll}
         >
           Deselect All
         </Button>
@@ -69,8 +72,8 @@ const SelectionCollapse = (props: any) => {
           <MenuItem
             onClick={(event: any) => {
               handleClose();
-              context.moveBooks(props.selectedBooks, "currentlyReading");
-              props.deselectAll();
+              context.moveBooks(shelfContext.selectedBooks, "currentlyReading");
+              shelfContext.deselectAll();
             }}
             value="currentlyReading"
           >
@@ -81,8 +84,8 @@ const SelectionCollapse = (props: any) => {
           <MenuItem
             onClick={(event: any) => {
               handleClose();
-              context.moveBooks(props.selectedBooks, "wantToRead");
-              props.deselectAll();
+              context.moveBooks(shelfContext.selectedBooks, "wantToRead");
+              shelfContext.deselectAll();
             }}
             value="wantToRead"
           >
@@ -94,8 +97,8 @@ const SelectionCollapse = (props: any) => {
           <MenuItem
             onClick={(event: any) => {
               handleClose();
-              context.moveBooks(props.selectedBooks, "read");
-              props.deselectAll();
+              context.moveBooks(shelfContext.selectedBooks, "read");
+              shelfContext.deselectAll();
             }}
             value="read"
           >
@@ -106,8 +109,8 @@ const SelectionCollapse = (props: any) => {
         <MenuItem
           onClick={(event: any) => {
             handleClose();
-            context.moveBooks(props.selectedBooks, "none");
-            props.deselectAll();
+            context.moveBooks(shelfContext.selectedBooks, "none");
+            shelfContext.deselectAll();
           }}
           value="none"
         >

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import AppContext from "../../store/AppContext";
+import ShelfContext from "../../store/ShelfContext";
 
 import { Grid } from "@mui/material";
 
@@ -7,6 +8,7 @@ import Book from "../Book";
 
 const ShelfBody = (props: any) => {
   const context = useContext(AppContext);
+  const shelfContext = useContext(ShelfContext);
 
   return (
     <Grid
@@ -19,20 +21,21 @@ const ShelfBody = (props: any) => {
       {props.books
         .filter(
           (book: any) =>
-            props.match.test(book.title) || props.match.test(book.authors)
+            shelfContext.match.test(book.title) ||
+            shelfContext.match.test(book.authors)
         )
         .map((book: any) => (
           <Book
             book={book}
             moveBook={context.moveBook}
-            selectionMode={props.selectionMode}
+            selectionMode={shelfContext.selectionMode}
             selected={
-              props.selectedBooks.filter(
+              shelfContext.selectedBooks.filter(
                 (currentBook: any) => currentBook.id === book.id
               ).length > 0
             }
-            selectBook={props.selectBook}
-            deselectBook={props.deselectBook}
+            selectBook={shelfContext.selectBook}
+            deselectBook={shelfContext.deselectBook}
             key={book.id}
           />
         ))}

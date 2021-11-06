@@ -1,8 +1,13 @@
+import { useContext } from "react";
+import ShelfContext from "../../../store/ShelfContext";
+
 import { Collapse, TextField } from "@mui/material";
 
-const LargeCollapse = (props: any) => {
+const LargeCollapse = () => {
+  const shelfContext = useContext(ShelfContext);
+
   return (
-    <Collapse in={props.filterExpanded} timeout="auto" unmountOnExit>
+    <Collapse in={shelfContext.filterExpanded} timeout="auto" unmountOnExit>
       <TextField
         placeholder="Filter"
         variant="standard"
@@ -16,8 +21,8 @@ const LargeCollapse = (props: any) => {
             fontSize: "1.5rem",
           },
         }}
-        value={props.filterQuery}
-        onChange={props.handleFilter}
+        value={shelfContext.filterQuery}
+        onChange={shelfContext.handleFilter}
       />
     </Collapse>
   );

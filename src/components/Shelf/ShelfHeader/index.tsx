@@ -24,48 +24,12 @@ const ShelfToolbar = (props: any) => {
         >
           {props.shelfTitle}
         </Typography>
-        {context.isMobile ? (
-          <MobileView handleMobileExpand={props.handleMobileExpand} />
-        ) : (
-          <LargeView
-            handleFilterExpand={props.handleFilterExpand}
-            toggleSelectionMode={props.toggleSelectionMode}
-            handleDialogOpen={props.handleDialogOpen}
-          />
-        )}
+        {context.isMobile ? <MobileView /> : <LargeView />}
       </Stack>
       <Divider />
-      {context.isMobile ? (
-        <MobileCollapse
-          mobileExpanded={props.mobileExpanded}
-          filterQuery={props.filterQuery}
-          handleFilter={props.handleFilter}
-          toggleSelectionMode={props.toggleSelectionMode}
-          handleDialogOpen={props.handleDialogOpen}
-        />
-      ) : (
-        <LargeCollapse
-          filterExpanded={props.filterExpanded}
-          filterQuery={props.filterQuery}
-          handleFilter={props.handleFilter}
-        />
-      )}
-      <SelectionCollapse
-        books={props.books}
-        filterQuery={props.filterQuery}
-        selectionMode={props.selectionMode}
-        selectedBooks={props.selectedBooks}
-        selectAll={props.selectAll}
-        deselectAll={props.deselectAll}
-        shelfValue={props.shelfValue}
-        match={props.match}
-      />
-      <AlertDialog
-        books={props.books}
-        dialog={props.dialog}
-        handleDialogClose={props.handleDialogClose}
-        shelfValue={props.shelfValue}
-      />
+      {context.isMobile ? <MobileCollapse /> : <LargeCollapse />}
+      <SelectionCollapse books={props.books} shelfValue={props.shelfValue} />
+      <AlertDialog books={props.books} />
     </Stack>
   );
 };

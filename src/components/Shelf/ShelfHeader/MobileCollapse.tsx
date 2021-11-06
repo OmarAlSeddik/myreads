@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import ShelfContext from "../../../store/ShelfContext";
+
 import {
   Collapse,
   Stack,
@@ -10,9 +13,11 @@ import {
 import SelectAllIcon from "@mui/icons-material/SelectAll";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const MobileCollapse = (props: any) => {
+const MobileCollapse = () => {
+  const shelfContext = useContext(ShelfContext);
+
   return (
-    <Collapse in={props.mobileExpanded} timeout="auto" unmountOnExit>
+    <Collapse in={shelfContext.mobileExpanded} timeout="auto" unmountOnExit>
       <Stack direction="row">
         <TextField
           placeholder="Filter"
@@ -27,8 +32,8 @@ const MobileCollapse = (props: any) => {
               fontSize: "1.5rem",
             },
           }}
-          value={props.filterQuery}
-          onChange={props.handleFilter}
+          value={shelfContext.filterQuery}
+          onChange={shelfContext.handleFilter}
         />
         <ButtonGroup
           variant="text"
@@ -41,14 +46,14 @@ const MobileCollapse = (props: any) => {
         >
           <Button
             startIcon={<SelectAllIcon />}
-            onClick={props.toggleSelectionMode}
+            onClick={shelfContext.toggleSelectionMode}
           >
             Select
           </Button>
           <Button
             startIcon={<ClearIcon />}
             color="error"
-            onClick={props.handleDialogOpen}
+            onClick={shelfContext.handleDialogOpen}
           >
             Clear
           </Button>

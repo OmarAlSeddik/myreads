@@ -15,18 +15,18 @@ import { ThemeProvider } from "@mui/material/styles";
 
 interface AppContextInterface {
   themeMode: string;
-  toggleTheme: any;
-  colors: any;
+  toggleTheme: (event: React.ChangeEvent<{}>) => any;
+  colors: any[];
   themeColor: any;
-  setThemeColor: any;
+  setThemeColor: (color: any) => any;
   theme: any;
   isMobile: boolean;
   pageValue: number;
-  handlePageChange: any;
-  books: any;
-  setBooks: any;
-  moveBook: any;
-  moveBooks: any;
+  handlePageChange: (event: React.ChangeEvent<{}>, newValue: number) => any;
+  books: any[];
+  setBooks: () => any;
+  moveBook: (targetBook: any, destination: string) => any;
+  moveBooks: (targetBooks: Array<any>, destination: string) => any;
   bookIdMap: any;
 }
 
