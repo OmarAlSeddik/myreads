@@ -34,9 +34,6 @@ const Home = () => {
               books={context.books.filter(
                 (book: any) => book.shelf === shelf.value
               )}
-              setBooks={context.setBooks}
-              moveBook={context.moveBook}
-              moveBooks={context.moveBooks}
             />
           ))}
         </Stack>

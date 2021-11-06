@@ -9,7 +9,11 @@ const Header = () => {
     <AppBar
       color="default"
       position="fixed"
-      sx={{ alignItems: "center", width: "100vw", left: 0 }}
+      sx={{
+        alignItems: "center",
+        width: "100vw",
+        left: 0,
+      }}
     >
       <Stack
         direction="row"

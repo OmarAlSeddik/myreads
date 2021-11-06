@@ -16,9 +16,9 @@ interface ShelfContextInterface {
   selectionMode: boolean;
   toggleSelectionMode: () => any;
   selectedBooks: any[];
-  selectBook: (arg0: any) => void;
-  selectAll: () => any;
-  deselectBook: (arg0: any) => void;
+  selectBook: (arg: any) => void;
+  selectAll: (arg: any) => any;
+  deselectBook: (arg: any) => void;
   deselectAll: () => any;
 }
 
@@ -90,9 +90,9 @@ export const ShelfContextProvider = (props: any) => {
       );
   };
 
-  const selectAll = () =>
+  const selectAll = (books: any) =>
     setSelectedBooks(
-      props.books.filter(
+      books.filter(
         (book: any) => match.test(book.title) || match.test(book.authors)
       )
     );

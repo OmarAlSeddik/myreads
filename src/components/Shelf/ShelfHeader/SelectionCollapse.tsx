@@ -31,7 +31,7 @@ const SelectionCollapse = (props: any) => {
             ).length
           }
           sx={{ margin: 1, textTransform: "capitalize" }}
-          onClick={shelfContext.selectAll}
+          onClick={() => shelfContext.selectAll(props.books)}
         >
           Select All
         </Button>

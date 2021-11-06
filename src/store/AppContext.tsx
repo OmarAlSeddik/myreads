@@ -11,7 +11,7 @@ import {
 import useStickyState from "../hooks/useStickyState";
 
 import { blue, pink, green, amber } from "@mui/material/colors";
-import { ThemeProvider } from "@mui/material/styles";
+import { alpha, ThemeProvider } from "@mui/material/styles";
 
 interface AppContextInterface {
   themeMode: string;
@@ -71,6 +71,11 @@ export const AppContextProvider = (props: any) => {
           mode: themeMode,
           primary: {
             main: themeMode === "dark" ? themeColor[400] : themeColor[900],
+          },
+          background: {
+            default:
+              themeMode === "dark" ? "#121212" : alpha(themeColor[900], 0.1),
+            paper: themeMode === "dark" ? "#121212" : alpha("#fff", 0.9),
           },
         },
       }),
